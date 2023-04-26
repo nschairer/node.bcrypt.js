@@ -99,15 +99,15 @@ namespace {
         if (!info[0].IsString()) {
             throw Napi::TypeError::New(env, "First argument must be a string");
         }
-        if (!info[2].IsBuffer() || (info[2].As<Napi::Buffer<char>>()).Length() != 16) {
-            throw Napi::TypeError::New(env, "Second argument must be a 16 byte Buffer");
+        if (!info[2].IsBuffer() || (info[2].As<Napi::Buffer<char>>()).Length() != 32) {
+            throw Napi::TypeError::New(env, "Second argument must be a 32 byte Buffer");
         }
 
         const char minor_ver = ToCharVersion(info[0].As<Napi::String>());
         const int32_t rounds = info[1].As<Napi::Number>();
         Napi::Buffer<char> seed = info[2].As<Napi::Buffer<char>>();
         Napi::Function callback = info[3].As<Napi::Function>();
-        SaltAsyncWorker* saltWorker = new SaltAsyncWorker(callback, std::string(seed.Data(), 16), rounds, minor_ver);
+        SaltAsyncWorker* saltWorker = new SaltAsyncWorker(callback, std::string(seed.Data(), 32), rounds, minor_ver);
         saltWorker->Queue();
         return env.Undefined();
     }
@@ -120,8 +120,8 @@ namespace {
         if (!info[0].IsString()) {
             throw Napi::TypeError::New(env, "First argument must be a string");
         }
-        if (!info[2].IsBuffer() || (info[2].As<Napi::Buffer<char>>()).Length() != 16) {
-            throw Napi::TypeError::New(env, "Third argument must be a 16 byte Buffer");
+        if (!info[2].IsBuffer() || (info[2].As<Napi::Buffer<char>>()).Length() != 32) {
+            throw Napi::TypeError::New(env, "Third argument must be a 32 byte Buffer");
         }
         const char minor_ver = ToCharVersion(info[0].As<Napi::String>());
         const int32_t rounds = info[1].As<Napi::Number>();
