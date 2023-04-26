@@ -26,7 +26,7 @@ module.exports.genSaltSync = function genSaltSync(rounds, minor) {
         throw new Error('minor must be either "a" or "b"');
     }
 
-    return bindings.gen_salt_sync(minor, rounds, crypto.randomBytes(16));
+    return bindings.gen_salt_sync(minor, rounds, crypto.randomBytes(32));
 };
 
 /// generate a salt
@@ -72,7 +72,7 @@ module.exports.genSalt = function genSalt(rounds, minor, cb) {
         });
     }
 
-    crypto.randomBytes(16, function(error, randomBytes) {
+    crypto.randomBytes(32, function(error, randomBytes) {
         if (error) {
             cb(error);
             return;
