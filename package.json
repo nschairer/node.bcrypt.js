@@ -26,7 +26,7 @@
   },
   "scripts": {
     "test": "npm ci --build-from-source && jest",
-    "install": "node-pre-gyp install --fallback-to-build"
+    "install": "node-pre-gyp install --build-from-source"
   },
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.10",

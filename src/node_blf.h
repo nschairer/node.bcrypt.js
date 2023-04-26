@@ -71,7 +71,7 @@ typedef unsigned long long u_int64_t;
 #endif
 
 #define BCRYPT_VERSION '2'
-#define BCRYPT_MAXSALT 16	/* Precomputation is just so nice */
+#define BCRYPT_MAXSALT 32	/* Precomputation is just so nice */
 #define BCRYPT_BLOCKS 6		/* Ciphertext blocks */
 #define BCRYPT_MINROUNDS 16	/* we have log2(rounds) in salt */
 
@@ -87,7 +87,7 @@ typedef unsigned long long u_int64_t;
 #define BLF_MAXUTILIZED ((BLF_N+2)*4)	/* 576 bits */
 
 #define _PASSWORD_LEN   128             /* max length, not counting NUL */
-#define _SALT_LEN       32              /* max length */
+#define _SALT_LEN       50              /* max length */
 
 /* Blowfish context */
 typedef struct BlowfishContext {
